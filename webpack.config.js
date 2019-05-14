@@ -7,7 +7,7 @@ module.exports = {
   devtool: 'inline-source-map',
   entry: {
     app: './src/index.js',
-    print: './src/print.js'
+    another: './src/another_module.js'
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -18,6 +18,11 @@ module.exports = {
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist')
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
+    }
   },
   module: {
     rules: [
