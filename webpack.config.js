@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
@@ -12,19 +13,27 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Output Management',
-    })
+      title: 'Caching',
+    }),
+    new webpack.HashedModuleIdsPlugin()
   ],
   output: {
-    filename: '[name].bundle.js',
-    chunkFilename: '[name].bundle.js',
+    filename: '[name].[contenthash].js',
+    // chunkFilename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
-  // optimization: {
-  //   splitChunks: {
-  //     chunks: 'all'
-  //   }
-  // },
+  optimization: {
+    runtimeChunk: 'single',
+     splitChunks: {
+       cacheGroups: {
+         vendor: {
+           test: /[\\/]node_modules[\\/]/,
+           name: 'vendors',
+           chunks: 'all'
+         }
+       }
+     }
+  },
   module: {
     rules: [
        {
