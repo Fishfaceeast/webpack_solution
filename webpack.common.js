@@ -5,7 +5,8 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-var ManifestPlugin = require('webpack-manifest-plugin');
+const ManifestPlugin = require('webpack-manifest-plugin');
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -13,6 +14,7 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
+    new CaseSensitivePathsPlugin(),
     new HtmlWebpackPlugin({
       title: 'Production',
     }),
