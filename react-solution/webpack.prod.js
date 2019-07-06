@@ -23,10 +23,6 @@ module.exports = merge(common, {
   module: {
     rules: [
      {
-      test: /\.js$/,
-      loader: 'babel-loader'
-     },
-     {
       test: /\.css$/,
       use: [
        { loader: MiniCssExtractPlugin.loader },

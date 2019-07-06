@@ -17,6 +17,8 @@ module.exports = {
     new CaseSensitivePathsPlugin(),
     new HtmlWebpackPlugin({
       title: 'Production',
+      template: "./src/index.html",
+      filename: "./index.html"
     }),
     new ManifestPlugin()
   ],
@@ -35,5 +37,17 @@ module.exports = {
         }
       }
     }
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+      }
+    ],
+  },
+  resolve: {
+    extensions: ['*', '.js', '.jsx']
   },
 };

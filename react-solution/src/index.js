@@ -1,16 +1,13 @@
 // require('./style.css');
 import './style.css';
 import './index.scss';
-import { cube } from './math.js';
 
-function component() {
-  const element = document.createElement('pre');
-  element.innerHTML = [
-     'Hello webpack!',
-     '5 cubed is equal to ' + cube(5)
-  ].join('\n\n');
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-  return element;
-}
+const title = 'React with Webpack and Babel';
 
-document.body.appendChild(component());
+ReactDOM.render(
+<div>{title}</div>,
+  document.getElementById('app')
+);
