@@ -20,28 +20,4 @@ module.exports = merge(common, {
      chunkFilename: '[id].css',
     }),
   ],
-  module: {
-    rules: [
-     {
-      test: /\.js$/,
-      loader: 'babel-loader'
-     },
-     {
-      test: /\.css$/,
-      use: [
-       { loader: MiniCssExtractPlugin.loader },
-       'css-loader',
-      ],
-     },
-     {
-      test: /\.scss$/,
-      use: [
-       { loader: MiniCssExtractPlugin.loader },
-       "css-loader", // translates CSS into CommonJS
-       "sass-loader" // compiles Sass to CSS, using Node Sass by default
-      ]
-     }
-
-    ],
-  },
 });

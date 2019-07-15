@@ -7,7 +7,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const helpers              = require('./helpers');
 
+const isDev = process.env.NODE_ENV === 'development';
 module.exports = {
   entry: {
     app: './src/index.js',
@@ -17,6 +20,8 @@ module.exports = {
     new CaseSensitivePathsPlugin(),
     new HtmlWebpackPlugin({
       title: 'Production',
+      template: "./src/index.html",
+      filename: "./index.html"
     }),
     new ManifestPlugin()
   ],
@@ -34,6 +39,50 @@ module.exports = {
           chunks: 'all'
         }
       }
+    }
+  },
+  module: {
+    rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        include: [ helpers.root('src') ]
+      },
+      {
+        test: /\.css$/,
+        use: [
+          isDev ? 'vue-style-loader' : MiniCSSExtractPlugin.loader,
+          'css-loader'
+        ]
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          isDev ? 'vue-style-loader' : MiniCSSExtractPlugin.loader,
+          "css-loader", // translates CSS into CommonJS
+          "sass-loader" // compiles Sass to CSS, using Node Sass by default
+        ]
+      },
+      {
+        test: /\.sass$/,
+        use: [
+          isDev ? 'vue-style-loader' : MiniCSSExtractPlugin.loader,
+          "css-loader", // translates CSS into CommonJS
+          "sass-loader" // compiles Sass to CSS, using Node Sass by default
+        ]
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+      }
+    ],
+  },
+  resolve: {
+    extensions: ['*', '.js', '.vue'],
+    alias: {
+      'vue$': isDev ? 'vue/dist/vue.runtime.js' : 'vue/dist/vue.runtime.min.js',
+      '@': helpers.root('src/client')
     }
   },
 };
