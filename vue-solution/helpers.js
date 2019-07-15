@@ -13,3 +13,5 @@ exports.root = function (args) {
 exports.assetsPath = function (_path) {
   return path.posix.join('static', _path);
 };
+
+// test
