@@ -1,16 +1,10 @@
-// require('./style.css');
 import './style.css';
 import './index.scss';
-import { cube } from './math.js';
+import Vue from 'vue';
+import App from './App.vue';
 
-function component() {
-  const element = document.createElement('pre');
-  element.innerHTML = [
-     'Hello webpack!',
-     '5 cubed is equal to ' + cube(5)
-  ].join('\n\n');
+new Vue({
+  el:'#app',
+  render: h => h(App)
+});
 
-  return element;
-}
-
-document.body.appendChild(component());
