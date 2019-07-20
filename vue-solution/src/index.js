@@ -1,5 +1,3 @@
-import './style.css';
-import './index.scss';
 import Vue from 'vue';
 import App from './App.vue';
 
