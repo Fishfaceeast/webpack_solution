@@ -47,7 +47,8 @@ module.exports = {
         use: [
           isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
           'css-loader'
-        ]
+        ],
+        exclude: /node_modules/,
       },
       {
         test: /\.scss$/,
@@ -55,7 +56,8 @@ module.exports = {
           isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
           "css-loader", // translates CSS into CommonJS
           "sass-loader" // compiles Sass to CSS, using Node Sass by default
-        ]
+        ],
+        exclude: /node_modules/,
       },
       {
         test: /\.(js|jsx)$/,
