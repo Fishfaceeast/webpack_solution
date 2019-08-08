@@ -13,4 +13,7 @@ function component() {
   return element;
 }
 
+import(/* webpackChunkName: "bar" */ './bar.js').then(({ add }) => {
+  console.log(add(2, 3));
+});
 document.body.appendChild(component());
