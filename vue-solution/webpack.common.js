@@ -13,6 +13,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const helpers              = require('./helpers');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
+const test = path.resolve(__dirname, 'src');
+console.log(test)
+
 const isDev = process.env.NODE_ENV === 'development';
 module.exports = {
   entry: {
@@ -85,7 +88,7 @@ module.exports = {
     extensions: ['*', '.js', '.vue'],
     alias: {
       'vue$': isDev ? 'vue/dist/vue.runtime.js' : 'vue/dist/vue.runtime.min.js',
-      '@': helpers.root('src/client')
+      '@': path.resolve(__dirname, 'src')
     }
   },
 };
