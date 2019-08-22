@@ -1,7 +1,6 @@
 <template>
   <section>
     <div class="example">{{ msg }}</div>
-    <button-counter></button-counter>
     <Cart
       :products="products"
     />
