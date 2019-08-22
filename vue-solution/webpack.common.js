@@ -87,7 +87,7 @@ module.exports = {
   resolve: {
     extensions: ['*', '.js', '.vue'],
     alias: {
-      'vue$': isDev ? 'vue/dist/vue.runtime.js' : 'vue/dist/vue.runtime.min.js',
+      'vue$': isDev ? 'vue/dist/vue.js' : 'vue/dist/vue.runtime.min.js',
       '@': path.resolve(__dirname, 'src')
     }
   },
