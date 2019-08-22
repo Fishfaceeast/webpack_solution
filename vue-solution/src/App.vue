@@ -1,14 +1,27 @@
 <template>
+  <section>
     <div class="example">{{ msg }}</div>
+
+    <Cart
+      :products="products"
+    />
+  </section>
 </template>
 
 <script>
-    export default {
-        name: "App",
-        data: function(){
-            return {msg: 'haha'}
-        }
-    };
+  import Cart from '@/components/Cart.vue'
+  export default {
+    name: "App",
+    components: {
+      Cart,
+    },
+    data() {
+      return {
+        msg: 'haha',
+        products: ['mac', 'iPhone', 'airPods']
+      }
+    }
+  };
 </script>
 <style lang="scss">
     @import "./app.scss";
