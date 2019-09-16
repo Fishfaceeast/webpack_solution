@@ -19,7 +19,8 @@
       :product-list="productList"
       @change-event="doSomething"
     />
-    <AsyncComponent></AsyncComponent>
+    <asyncCard></asyncCard>
+    <MixinConsumer />
   </section>
 </template>
 
@@ -27,13 +28,23 @@
   import Cart from '@/components/Cart.vue'
   import AlertBox from '@/components/AlertBox.vue'
   import BaseLayout from '@/components/BaseLayout.vue'
+  import VuePlaceholder from '@/components/VuePlaceholder.vue'
+  import MixinConsumer from '@/components/MixinConsumer.vue'
+
+  const asyncCard = () => ({
+    component: import('@/components/AsyncComponent.vue'),
+    loading: VuePlaceholder,
+    delay: 1
+  })
+
   export default {
     name: "App",
     components: {
       Cart,
       AlertBox,
       BaseLayout,
-      'AsyncComponent': () => import('@/components/AsyncComponent.vue')
+      asyncCard,
+      MixinConsumer
     },
     data() {
       return {
