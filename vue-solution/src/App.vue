@@ -17,6 +17,7 @@
     </table>
     <Cart
       :product-list="productList"
+      :tester="testerData"
       @change-event="doSomething"
     />
     <asyncCard></asyncCard>
@@ -46,10 +47,17 @@
       asyncCard,
       MixinConsumer
     },
+    mounted() {
+      const self = this;
+      setTimeout(function() {
+        self.testerData = '9999';
+      }, 2000)
+    },
     data() {
       return {
         msg: 'haha',
         productList: ['mac', 'iPhone', 'airPods'],
+        testerData: '1111',
         user: {
           name: 'kitty',
           gender: 'female',

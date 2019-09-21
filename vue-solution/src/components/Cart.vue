@@ -20,6 +20,12 @@
         {{ product }}
       </li>
     </ul>
+    <div>
+      {{ this.tester }}
+    </div>
+    <div>
+      {{ this.test }}
+    </div>
   </div>
 </template>
 
@@ -38,13 +44,20 @@
           return []
         }
       },
+      tester: {
+        type: String,
+        default: function () {
+          return ''
+        }
+      },
     },
     data() {
       return {
         rawHtml: '<a>hahaha</a>',
         searchText: '',
         searchText2: '',
-        searchText3:''
+        searchText3:'',
+        test: this.tester
       };
     },
     methods: {
