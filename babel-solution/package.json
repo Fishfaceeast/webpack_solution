@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
-    "lodash-es": "^4.17.11"
+    "lodash-es": "^4.17.21"
   },
   "sideEffects": true
 }
